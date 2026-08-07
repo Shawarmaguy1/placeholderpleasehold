@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project ██████</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0b0b0b;
+    color:#ddd;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        transparent 0px,
+        rgba(255,255,255,.02) 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    animation:flicker .12s infinite;
+}
+
+@keyframes flicker{
+    50%{opacity:.95;}
+}
+
+header{
+    text-align:center;
+    padding:60px 20px;
+}
+
+h1{
+    font-size:3rem;
+    letter-spacing:10px;
+    color:#ffe77a;
+}
+
+.subtitle{
+    opacity:.7;
+    margin-top:15px;
+    font-style:italic;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.imageBox{
+    border:2px solid #444;
+    overflow:hidden;
+    border-radius:10px;
+    box-shadow:0 0 25px rgba(255,255,120,.15);
+}
+
+.imageBox img{
+    width:100%;
+    display:block;
+    height:500px;
+    object-fit:cover;
+    filter:saturate(.7) contrast(1.1);
+}
+
+.panel{
+    margin-top:30px;
+    background:#141414;
+    border:1px solid #333;
+    border-radius:8px;
+    padding:20px;
+}
+
+.progress{
+    width:100%;
+    height:18px;
+    background:#222;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ffe77a,#fff6ba);
+    transition:.4s;
+}
+
+.status{
+    margin-top:15px;
+    color:#8cff8c;
+    font-family:monospace;
+}
+
+button{
+    margin-top:20px;
+    background:#ffe77a;
+    color:black;
+    border:none;
+    padding:12px 18px;
+    cursor:pointer;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.04);
+}
+
+footer{
+    margin:60px 0 30px;
+    text-align:center;
+    opacity:.5;
+    font-size:.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>PROJECT ██████</h1>
+
+<div class="subtitle">
+Nothing is ready. Everything is operational.
+</div>
+
+</header>
+
+<main>
+
+<div class="imageBox">
+<img id="bgImage" src="images/1.jpg" alt="Backrooms">
+</div>
+
+<div class="panel">
+
+<h2>Current Status</h2>
+
+<p id="message">
+Initializing existential placeholder...
+</p>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="status" id="status">
+Awaiting authorization...
+</div>
+
+<button onclick="changeEverything()">
+Refresh Reality
+</button>
+
+</div>
+
+</main>
+
+<footer>
+© 20██ Placeholder Industries • We promise nothing and deliver exactly that.
+</footer>
+
+<script>
+
+const images = [
+    "images/alone.jpg",
+    "images/donttrust.jpg",
+    "images/entry.jpg",
+    "images/greenhalls.jpg",
+    "images/gstore.jpg",
+    "images/lost.jpg",
+    "images/spooky.jpg",
+    "images/where.jpg"
+];
+
+const messages = [
+    "Compiling unnecessary optimism...",
+    "Consulting the carpet...",
+    "Loading yellow wallpaper...",
+    "Convincing the server everything is fine...",
+    "Waiting for the walls to blink...",
+    "Replacing roadmap with mystery...",
+    "Reassuring management that this is intentional...",
+    "Searching for Exit 0...",
+    "Auditing reality...",
+    "Measuring fluorescent humming..."
+];
+
+const statuses = [
+    "Operational.",
+    "Mostly operational.",
+    "Probably operational.",
+    "Legally operational.",
+    "Operational until observed.",
+    "Working as designed.",
+    "Undefined behavior detected.",
+    "404 certainty not found.",
+    "Escaping impossible.",
+    "Escaping unnecessary."
+];
+
+function random(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function changeEverything(){
+
+    document.getElementById("bgImage").src = random(images);
+
+    document.getElementById("message").textContent = random(messages);
+
+    document.getElementById("status").textContent = random(statuses);
+
+    let width = 0;
+
+    const bar = document.getElementById("bar");
+    bar.style.width = "0%";
+
+    const interval = setInterval(() => {
+
+        width += Math.random() * 18;
+
+        if(width >= 100){
+            width = 100;
+            clearInterval(interval);
+            document.getElementById("status").textContent = random(statuses);
+        }
+
+        bar.style.width = width + "%";
+
+    },120);
+
+}
+
+// Automatically refresh every 7 seconds
+setInterval(changeEverything,7000);
+
+// Initial load
+changeEverything();
+
+</script>
+
+</body>
+</html>
